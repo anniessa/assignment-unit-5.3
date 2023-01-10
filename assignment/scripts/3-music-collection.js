@@ -24,3 +24,10 @@ console.log('You just added ', addToCollection('Little Dragon', 'Little Dragon',
 console.log('You just added ', addToCollection('Channel Tres', 'Channel Tres', 2018));
 
 console.log(collection);
+
+function showCollection (array) {
+    for (i in array){
+        console.log(title, 'by', artist, 'published in ', yearPublished);
+    }
+}
+console.log(showCollection[collection[albumElements]]);
