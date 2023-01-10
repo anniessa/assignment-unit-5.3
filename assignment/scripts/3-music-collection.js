@@ -10,3 +10,5 @@ function addToCollection (title, artist, yearPublished) {
     collection.push(albumElements);
     return albumElements
     }
+addToCollection('Oil of Every Pearls Undersides', 'SOPHIE', 2018);
+console.log('You just added ', addToCollection);
