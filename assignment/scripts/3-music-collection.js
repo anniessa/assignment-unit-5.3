@@ -29,12 +29,12 @@ function addToCollection (title, artist, yearPublished, tracksWithDuration) {
         return albumElements;
     }
 
-console.log('You just added ', addToCollection("Oil of Every Pearl's Un-sides", 'SOPHIE', 2018, [["It's Okay to Cry", "3:15"],['Ponyboy', "3:25"], ["Immaterial", '4:15'], ["Not Okay", '5:25']]);
-console.log('You just added ', addToCollection("EP2", 'Yaeji', 2017, ["Feelings Change: 2:35", "Raingurl: 3:57", "Drink I'm Sippin On: 3:21", "After That: 3:38", "Passionfruit: 2:55"]));
-console.log('You just added ', addToCollection('Live!', 'Bob Marley', 1975, ["Lively Up Yourself: 4:33", "Get Up Stand Up (live): 6:36", "Trenchtown Rock: 4:23", "Them Belly Full: 4:30", "I Shot the Sheriff (Live): 5:18"]));
-console.log('You just added ', addToCollection('Dreamland', 'Black Box', 1990, ["Dreamland: 2:04", "Open Your Eyes: 5:21", "I Don't Know Anybody Else: 4:35", "Ride on Time: 4:33", "Everybody Everybody: 5:23"]));
-console.log('You just added ', addToCollection('Little Dragon', 'Little Dragon', 2007, ["Twice: 3:06", "Turn Left: 4:05", "No Love:	4:26", "Recommendation:	3:52", "Constant Surprises: 4:33"]));
-console.log('You just added ', addToCollection('Channel Tres', 'Channel Tres', 2018, ["St. Julian (intro): 1:29", "Controller: 3:28", "Jet Black: 4:33", "Topdown: 3:50"]));
+console.log('You just added ', addToCollection("Oil of Every Pearl's Un-sides", 'SOPHIE', 2018, [["It's Okay to Cry", "3:15"],['Ponyboy', "3:25"], ["Immaterial", '4:15'], ["Not Okay", '5:25']]));
+console.log('You just added ', addToCollection("EP2", 'Yaeji', 2017, [["Feelings Change", "2:35"], ["Raingurl", "3:57"], ["Drink I'm Sippin On", "3:21"], ["After That", "3:38"], ["Passionfruit", "2:55"]]));
+console.log('You just added ', addToCollection('Live!', 'Bob Marley', 1975, [["Lively Up Yourself", "4:33"], ["Get Up Stand Up (live)", "6:36"], ["Trenchtown Rock", "4:23"], ["Them Belly Full", "4:30"], ["I Shot the Sheriff (Live)", "5:18"]]));
+console.log('You just added ', addToCollection('Dreamland', 'Black Box', 1990, [["Dreamland", "2:04"], ["Open Your Eyes", "5:21"],["I Don't Know Anybody Else", "4:35"], ["Ride on Time", "4:33"], ["Everybody Everybody", "5:23"]]));
+console.log('You just added ', addToCollection('Little Dragon', 'Little Dragon', 2007, [["Twice", "3:06"], ["Turn Left", "4:05"], ["No Love", "4:26"], ["Recommendation", "3:52"], ["Constant Surprises", "4:33"]]));
+console.log('You just added ', addToCollection('Channel Tres', 'Channel Tres', 2018, [["St. Julian (intro)", "1:29"], ["Controller", "3:28"], ["Jet Black", "4:33"], ["Topdown", "3:50"]]));
 
 console.log(collection);
 
@@ -98,9 +98,9 @@ function search (artist, yearPublished, tracksWithDuration, collection){
         }  
     }  return [];
 }
-console.log(search('Black Box', 1990, collection));
-console.log(search('Celine Dion', 1992, collection));
-console.log(search('', null, collection));
+console.log(search('Black Box', 1990, ["Dreamland", "2:04"], collection));
+console.log(search('Celine Dion', 1992, ['My Heart Will Go On', "4:40"], collection));
+console.log(search('', null, [], collection));
 
 
 // Add an array of tracks to your album objects. Each track should have a name and duration. You will need to update the functions to support this new property:
