@@ -18,7 +18,7 @@ let albumElements = {
     tracksWithDuration: [],
 }
 
-function addToCollection (title, artist, yearPublished, track1, track2, track3, track4, track5) {
+function addToCollection (title, artist, yearPublished, tracksWithDuration) {
     let albumElements = {
         title: title,
         artist: artist,
@@ -29,7 +29,7 @@ function addToCollection (title, artist, yearPublished, track1, track2, track3, 
         return albumElements;
     }
 
-console.log('You just added ', addToCollection("Oil of Every Pearl's Un-sides", 'SOPHIE', 2018, ["It's Okay to Cry: 3:51", "Ponyboy: 3:15", "Immaterial: 4:15", "Not Okay: 5:25"]));
+console.log('You just added ', addToCollection("Oil of Every Pearl's Un-sides", 'SOPHIE', 2018, [["It's Okay to Cry", "3:15"],['Ponyboy', "3:25"], ["Immaterial", '4:15'], ["Not Okay", '5:25']]);
 console.log('You just added ', addToCollection("EP2", 'Yaeji', 2017, ["Feelings Change: 2:35", "Raingurl: 3:57", "Drink I'm Sippin On: 3:21", "After That: 3:38", "Passionfruit: 2:55"]));
 console.log('You just added ', addToCollection('Live!', 'Bob Marley', 1975, ["Lively Up Yourself: 4:33", "Get Up Stand Up (live): 6:36", "Trenchtown Rock: 4:23", "Them Belly Full: 4:30", "I Shot the Sheriff (Live): 5:18"]));
 console.log('You just added ', addToCollection('Dreamland', 'Black Box', 1990, ["Dreamland: 2:04", "Open Your Eyes: 5:21", "I Don't Know Anybody Else: 4:35", "Ride on Time: 4:33", "Everybody Everybody: 5:23"]));
@@ -87,13 +87,13 @@ console.log(findByArtist('Backstreet Boys', collection));
 // If there is no search object or an empty search object provided as input, then return all albums in the collection.
 
 let newArray = [];
-function search (artist, yearPublished, collection){
-    if (!artist && !yearPublished){
+function search (artist, yearPublished, tracksWithDuration, collection){
+    if (!artist && !yearPublished && !tracksWithDuration){
         return collection;
     }
     for(i =0; i < collection.length; i++) {
-        if (collection[i].artist === artist && collection[i].yearPublished === yearPublished) {
-            newArray.push(artist, yearPublished);
+        if (collection[i].artist === artist && collection[i].yearPublished === yearPublished && collection[i].tracksWithDuration === tracksWithDuration) {
+            newArray.push(artist, yearPublished, tracksWithDuration);
             return newArray;
         }  
     }  return [];
