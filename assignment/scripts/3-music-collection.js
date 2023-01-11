@@ -1,4 +1,15 @@
 console.log('***** Music Collection *****')
+// Create a variable collection that starts as an empty array.
+// Add a function named addToCollection. This function should:
+// Take in the album's title, artist, yearPublished as input parameters
+// Create a new object having the above properties
+// Add the new object to the end of the collection array
+// Return the newly created object
+// Test the addToCollection function:
+// Add 6 albums to your collection. Aim to have a mix of both same and different artists and published years. (Feel free to share your musical interests, or make stuff up. Totally fine either way.)
+// Console.log each album as added using the returned value.
+// After all are added, console.log the collection array.
+
 let collection = [];
 let albumElements = {
     title: '',
@@ -61,4 +72,43 @@ function findByArtist (artist,collection){
 console.log(findByArtist('Black Box', collection));
 console.log(findByArtist('SOPHIE', collection));
 console.log(findByArtist('Smash Mouth', collection));
-console.log(findByArtist('Snoop Dogg', collection));
+console.log(findByArtist('Backstreet Boys', collection));
+
+//STRETCH GOALS
+
+// Create a function called search. This function should:
+// Take an input parameter for a search criteria object. Create your solution based on a search object that has these properties:
+// { artist: 'Ray Charles', year: 1957 }
+// The returned output from search should meet these requirements:
+// Return a new array of all items in the collection matching all of the search criteria.
+// If no results are found, return an empty array.
+// If there is no search object or an empty search object provided as input, then return all albums in the collection.
+
+let newArray = [];
+function search (artist, yearPublished, collection){
+    if (!artist && !yearPublished){
+        return collection;
+    }
+    for(i =0; i < collection.length; i++) {
+        if (collection[i].artist === artist && collection[i].yearPublished === yearPublished) {
+            newArray.push(artist, yearPublished);
+            return newArray;
+        }  
+    }  return [];
+}
+console.log(search('Black Box', 1990, collection));
+console.log(search('Celine Dion', 1992, collection));
+console.log(search('', null, collection));
+
+
+// Add an array of tracks to your album objects. Each track should have a name and duration. You will need to update the functions to support this new property:
+// Update the addToCollection function to also take an input parameter for the array of tracks.
+// Update search to allow a trackName search criteria.
+// Update the showCollection function to display the list of tracks for each album with its name and duration.
+//     TITLE by ARTIST, published in YEAR:
+//     1. NAME: DURATION
+//     2. NAME: DURATION
+//     3. NAME: DURATION
+//     TITLE by ARTIST, published in YEAR:
+//     1. NAME: DURATION
+//     2. NAME: DURATION
