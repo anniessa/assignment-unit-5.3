@@ -18,21 +18,22 @@ let albumElements = {
     tracksWithDuration: [],
 }
 
-function addToCollection (title, artist, yearPublished, tracksWithDuration) {
+function addToCollection(title, artist, yearPublished, tracksWithDuration) {
     let albumElements = {
         title: title,
         artist: artist,
         yearPublished: yearPublished,
         tracksWithDuration: tracksWithDuration,
-    }    
-        collection.push(albumElements);
-        return albumElements;
     }
+    collection.push(albumElements);
+    console.log('This is to check what is in the collection now: ', collection);
+    return albumElements;
+}
 
-console.log('You just added ', addToCollection("Oil of Every Pearl's Un-sides", 'SOPHIE', 2018, [["It's Okay to Cry", "3:15"],['Ponyboy', "3:25"], ["Immaterial", '4:15'], ["Not Okay", '5:25']]));
+console.log('You just added ', addToCollection("Oil of Every Pearl's Un-sides", 'SOPHIE', 2018, [["It's Okay to Cry", "3:15"], ['Ponyboy', "3:25"], ["Immaterial", '4:15'], ["Not Okay", '5:25']]));
 console.log('You just added ', addToCollection("EP2", 'Yaeji', 2017, [["Feelings Change", "2:35"], ["Raingurl", "3:57"], ["Drink I'm Sippin On", "3:21"], ["After That", "3:38"], ["Passionfruit", "2:55"]]));
 console.log('You just added ', addToCollection('Live!', 'Bob Marley', 1975, [["Lively Up Yourself", "4:33"], ["Get Up Stand Up (live)", "6:36"], ["Trenchtown Rock", "4:23"], ["Them Belly Full", "4:30"], ["I Shot the Sheriff (Live)", "5:18"]]));
-console.log('You just added ', addToCollection('Dreamland', 'Black Box', 1990, [["Dreamland", "2:04"], ["Open Your Eyes", "5:21"],["I Don't Know Anybody Else", "4:35"], ["Ride on Time", "4:33"], ["Everybody Everybody", "5:23"]]));
+console.log('You just added ', addToCollection('Dreamland', 'Black Box', 1990, [["Dreamland", "2:04"], ["Open Your Eyes", "5:21"], ["I Don't Know Anybody Else", "4:35"], ["Ride on Time", "4:33"], ["Everybody Everybody", "5:23"]]));
 console.log('You just added ', addToCollection('Little Dragon', 'Little Dragon', 2007, [["Twice", "3:06"], ["Turn Left", "4:05"], ["No Love", "4:26"], ["Recommendation", "3:52"], ["Constant Surprises", "4:33"]]));
 console.log('You just added ', addToCollection('Channel Tres', 'Channel Tres', 2018, [["St. Julian (intro)", "1:29"], ["Controller", "3:28"], ["Jet Black", "4:33"], ["Topdown", "3:50"]]));
 
@@ -43,14 +44,15 @@ console.log(collection);
 // Console.log the number of items in the array.
 // Loop over the array and console.log each album's information formatted like: TITLE by ARTIST, published in YEAR.
 
-function showCollection (array) {
-    for (let i =0; i<array.length; i++){
-        array[i];
-        console.log(array[i]);
+function showCollection(array) {
+    console.log("All items in collection array: ", array);
+    for (let i = 0; i < array.length; i++) {
+        let currentAlbum = array[i];
+        console.log(currentAlbum.title, 'by ', currentAlbum.artist, 'published in', currentAlbum.yearPublished, currentAlbum.tracksWithDuration);
     }
 }
 //Test the showCollection function. 
-console.log(showCollection(collection));
+showCollection(collection);
 
 // Add a function named findByArtist. This function should:
 // Take in artist (a string) parameter
@@ -62,13 +64,13 @@ console.log(showCollection(collection));
 
 let artists = [];
 
-function findByArtist (artist,collection){
-    for(i =0; i < collection.length; i++) {
+function findByArtist(artist, collection) {
+    for (i = 0; i < collection.length; i++) {
         if (collection[i].artist === artist) {
             artists.push(artist);
             return artists;
-        }  
-    }  return [];
+        }
+    } return [];
 }
 
 console.log(findByArtist('Black Box', collection));
@@ -87,17 +89,25 @@ console.log(findByArtist('Backstreet Boys', collection));
 // If there is no search object or an empty search object provided as input, then return all albums in the collection.
 
 let newArray = [];
-function search (artist, yearPublished, tracksWithDuration, collection){
-    if (!artist && !yearPublished && !tracksWithDuration){
+function isThisTrackIncluded(allTracks, trackToSearch) {
+    // This function needs to see if trackToSearch exists in allTracks - search an array and return a boolean.
+    if (allTracks.indexOf(trackToSearch) !== -1); {
+        return true;
+    } 
+}
+
+function search(artist, yearPublished, tracksWithDuration, collection) {
+    if (!artist && !yearPublished && !tracksWithDuration) {
         return collection;
     }
-    for(i =0; i < collection.length; i++) {
-        if (collection[i].artist === artist && collection[i].yearPublished === yearPublished && collection[i].tracksWithDuration === tracksWithDuration) {
+    for (i = 0; i < collection.length; i++) {
+        if (collection[i].artist === artist && collection[i].yearPublished === yearPublished && isThisTrackIncluded(collection[i].tracksWithDuration, tracksWithDuration)) {
             newArray.push(artist, yearPublished, tracksWithDuration);
             return newArray;
-        }  
-    }  return [];
-}
+        }
+    } return [];
+}  
+
 console.log(search('Black Box', 1990, ["Dreamland", "2:04"], collection));
 console.log(search('Celine Dion', 1992, ['My Heart Will Go On', "4:40"], collection));
 console.log(search('', null, [], collection));
