@@ -49,18 +49,16 @@ console.log(showCollection(collection));
 
 let artists = [];
 
-function findByArtist (artist){
-    let i = 0;
-
-    while (i < collection.length) {
-        console.log(collection[i]);
-        i++;
-        artists.push(artist);
-        if (artist === artists) {
+function findByArtist (artist,collection){
+    for(i =0; i < collection.length; i++) {
+        if (collection[i].artist === artist) {
+            artists.push(artist);
             return artists;
         }  
-    }  return 'null';
+    }  return [];
 }
 
-console.log(findByArtist('Black Box'));
-console.log(findByArtist('Smash Mouth'));
+console.log(findByArtist('Black Box', collection));
+console.log(findByArtist('SOPHIE', collection));
+console.log(findByArtist('Smash Mouth', collection));
+console.log(findByArtist('Snoop Dogg', collection));
