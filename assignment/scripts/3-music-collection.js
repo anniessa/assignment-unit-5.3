@@ -41,7 +41,7 @@ function showCollection(array) {
     console.log("All items in collection array: ", array);
     for (let i = 0; i < array.length; i++) {
         let currentAlbum = array[i];
-        console.log(currentAlbum.title, 'by',currentAlbum.artist, 'published in', currentAlbum.yearPublished, currentAlbum.tracksWithDuration);
+        console.log(`${currentAlbum.title} by ${currentAlbum.artist} published in ${currentAlbum.yearPublished} featuring tracks ${currentAlbum.tracksWithDuration}`);
     }
 }
 //Test the showCollection function. 
@@ -94,7 +94,7 @@ function search (searchObject, collection){
     }
     let newArray = [];
     for(let album of collection) {
-        if (searchObject.artist === album.artist && searchObject.yearPublished === album.yearPublished && searchObject.tracksWithDuration === album.trackswithDuration){
+        if (searchObject.artist === album.artist && searchObject.yearPublished === album.yearPublished && isThisTrackIncluded(searchObject.tracksWithDuration, album.trackswithDuration)){
         newArray.push(album);
         } 
     } 
@@ -107,15 +107,3 @@ let searchObject = {
     tracksWithDuration: ["Get Up Stand Up (live)", "6:36"]
 }
 console.log(search(searchObject, collection)); 
-
-// Add an array of tracks to your album objects. Each track should have a name and duration. You will need to update the functions to support this new property:
-// Update the addToCollection function to also take an input parameter for the array of tracks.
-// Update search to allow a trackName search criteria.
-// Update the showCollection function to display the list of tracks for each album with its name and duration.
-//     TITLE by ARTIST, published in YEAR:
-//     1. NAME: DURATION
-//     2. NAME: DURATION
-//     3. NAME: DURATION
-//     TITLE by ARTIST, published in YEAR:
-//     1. NAME: DURATION
-//     2. NAME: DURATION
