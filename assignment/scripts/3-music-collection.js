@@ -108,9 +108,10 @@ function search(artist, yearPublished, tracksWithDuration, collection) {
     } return [];
 }  
 
-console.log(search('Black Box', 1990, ["Dreamland", "2:04"], collection));
-console.log(search('Celine Dion', 1992, ['My Heart Will Go On', "4:40"], collection));
-console.log(search('', null, [], collection));
+console.log(search('Black Box', 1990, ["Dreamland", "2:04"], collection)); // this is in my collection
+console.log(search('Bob Marley', 1975, ["Get Up Stand Up (live)", "6:36"], collection)); // this is in my collection
+console.log(search("This should be a blank array:", 'Celine Dion', 1992, ['My Heart Will Go On', "4:40"], collection)); // this is not in my collection
+console.log(search("This should log the collection: ", '', null, [], collection)); 
 
 
 // Add an array of tracks to your album objects. Each track should have a name and duration. You will need to update the functions to support this new property:
