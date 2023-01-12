@@ -97,7 +97,7 @@ function isThisTrackIncluded(allTracks, trackToSearch) {
 }
 
 function search(artist, yearPublished, tracksWithDuration, collection) {
-    if (!artist && !yearPublished && !isThisTrackIncluded) {
+    if (!artist && !yearPublished) {
         return collection;
     }
     for (i = 0; i < collection.length; i++) {
