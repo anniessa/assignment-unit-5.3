@@ -13,10 +13,10 @@ console.log('***** Music Collection *****')
 let collection = [];
 function addToCollection(title, artist, yearPublished, tracksWithDuration) {
     let albumElements = {
-        title: title,
-        artist: artist,
-        yearPublished: yearPublished,
-        tracksWithDuration: tracksWithDuration,
+        title,
+        artist,
+        yearPublished,
+        tracksWithDuration,
     }
     collection.push(albumElements);
     console.log('This is to check what is in the collection now: ', collection);
@@ -81,7 +81,6 @@ findByArtist('Backstreet Boys', collection);
 // If no results are found, return an empty array.
 // If there is no search object or an empty search object provided as input, then return all albums in the collection.
 
-let newArray = [];
 function isThisTrackIncluded(allTracks, trackToSearch) {
     // This function needs to see if trackToSearch exists in allTracks - search an array and return a boolean.
     if (allTracks.indexOf(trackToSearch) !== -1); {
@@ -89,23 +88,25 @@ function isThisTrackIncluded(allTracks, trackToSearch) {
     } 
 }
 
-function search(artist, yearPublished, tracksWithDuration, collection) {
-    if (!artist && !yearPublished) {
-        return collection;
+function search (searchObject, collection){
+    if(Object.keys(searchObject).length === 0) {
+    return collection;
     }
-    for (i = 0; i < collection.length; i++) {
-        if (collection[i].artist === artist && collection[i].yearPublished === yearPublished && isThisTrackIncluded(collection[i].tracksWithDuration, tracksWithDuration)) {
-            newArray.push(artist, yearPublished, tracksWithDuration);
-            return newArray;
-        }
-    } return [];
-}  
+    let newArray = [];
+    for(let album of collection) {
+        if (searchObject.artist === album.artist && searchObject.yearPublished === album.yearPublished && searchObject.tracksWithDuration === album.trackswithDuration){
+        newArray.push(album);
+        } 
+    } 
+    return newArray;
+}// end function
 
-console.log('This in in my collection: ', search('Black Box', 1990, ["Dreamland", "2:04"], collection)); // this is in my collection
-console.log('This is in my collection: ', search('Bob Marley', 1975, ["Get Up Stand Up (live)", "6:36"], collection)); // this is in my collection
-console.log('This should be a blank array: ', search( 'Celine Dion', 1992, ['My Heart Will Go On', "4:40"], collection)); // this is not in my collection
-console.log('This should log the collection: ', search('', null, [], collection)); 
-
+let searchObject = {
+    artist: 'Bob Marley',
+    yearPublished: 1975,
+    tracksWithDuration: ["Get Up Stand Up (live)", "6:36"]
+}
+console.log(search(searchObject, collection)); 
 
 // Add an array of tracks to your album objects. Each track should have a name and duration. You will need to update the functions to support this new property:
 // Update the addToCollection function to also take an input parameter for the array of tracks.
