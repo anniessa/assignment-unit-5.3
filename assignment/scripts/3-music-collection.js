@@ -73,10 +73,10 @@ function findByArtist(artist, collection) {
     } return [];
 }
 
-console.log(findByArtist('Black Box', collection));
-console.log(findByArtist('SOPHIE', collection));
-console.log(findByArtist('Smash Mouth', collection));
-console.log(findByArtist('Backstreet Boys', collection));
+findByArtist('Black Box', collection);
+findByArtist('SOPHIE', collection);
+findByArtist('Smash Mouth', collection);
+findByArtist('Backstreet Boys', collection);
 
 //STRETCH GOALS
 
@@ -97,7 +97,7 @@ function isThisTrackIncluded(allTracks, trackToSearch) {
 }
 
 function search(artist, yearPublished, tracksWithDuration, collection) {
-    if (!artist && !yearPublished && !tracksWithDuration) {
+    if (!artist && !yearPublished && !isThisTrackIncluded) {
         return collection;
     }
     for (i = 0; i < collection.length; i++) {
@@ -108,10 +108,10 @@ function search(artist, yearPublished, tracksWithDuration, collection) {
     } return [];
 }  
 
-console.log(search('Black Box', 1990, ["Dreamland", "2:04"], collection)); // this is in my collection
-console.log(search('Bob Marley', 1975, ["Get Up Stand Up (live)", "6:36"], collection)); // this is in my collection
-console.log(search("This should be a blank array:", 'Celine Dion', 1992, ['My Heart Will Go On', "4:40"], collection)); // this is not in my collection
-console.log(search("This should log the collection: ", '', null, [], collection)); 
+console.log("This in in my collection: ", search('Black Box', 1990, ["Dreamland", "2:04"], collection)); // this is in my collection
+console.log("This is in my collection: ", search('Bob Marley', 1975, ["Get Up Stand Up (live)", "6:36"], collection)); // this is in my collection
+console.log("This should be a blank array:", search( 'Celine Dion', 1992, ['My Heart Will Go On', "4:40"], collection)); // this is not in my collection
+console.log("This should log the collection: ", search('', null, [], collection)); 
 
 
 // Add an array of tracks to your album objects. Each track should have a name and duration. You will need to update the functions to support this new property:
