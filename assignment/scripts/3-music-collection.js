@@ -11,41 +11,73 @@ console.log('***** Music Collection *****')
 // After all are added, console.log the collection array.
 
 let collection = [];
-function addToCollection(title, artist, yearPublished, tracksWithDuration) {
+function addToCollection(title, artist, yearPublished, tracks) {
     let albumElements = {
         title,
         artist,
         yearPublished,
-        tracksWithDuration,
+        tracks,
     }
     collection.push(albumElements);
     console.log('This is to check what is in the collection now: ', collection);
     return albumElements;
 }
 
-console.log('You just added ', addToCollection("Oil of Every Pearl's Un-sides", 'SOPHIE', 2018, [["It's Okay to Cry", "3:15"], ['Ponyboy', "3:25"], ["Immaterial", '4:15'], ["Not Okay", '5:25']]));
-console.log('You just added ', addToCollection('EP2', 'Yaeji', 2017, [["Feelings Change", "2:35"], ["Raingurl", "3:57"], ["Drink I'm Sippin On", "3:21"], ["After That", "3:38"], ["Passionfruit", "2:55"]]));
-console.log('You just added ', addToCollection('Live!', 'Bob Marley', 1975, [["Lively Up Yourself", "4:33"], ["Get Up Stand Up (live)", "6:36"], ["Trenchtown Rock", "4:23"], ["Them Belly Full", "4:30"], ["I Shot the Sheriff (Live)", "5:18"]]));
-console.log('You just added ', addToCollection('Dreamland', 'Black Box', 1990, [["Dreamland", "2:04"], ["Open Your Eyes", "5:21"], ["I Don't Know Anybody Else", "4:35"], ["Ride on Time", "4:33"], ["Everybody Everybody", "5:23"]]));
-console.log('You just added ', addToCollection('Little Dragon', 'Little Dragon', 2007, [["Twice", "3:06"], ["Turn Left", "4:05"], ["No Love", "4:26"], ["Recommendation", "3:52"], ["Constant Surprises", "4:33"]]));
-console.log('You just added ', addToCollection('Channel Tres', 'Channel Tres', 2018, [["St. Julian (intro)", "1:29"], ["Controller", "3:28"], ["Jet Black", "4:33"], ["Topdown", "3:50"]]));
+console.log('You just added: ', addToCollection("Oil of Every Pearl's Un-sides", 'SOPHIE', 2018,
+    [{ name: "It's Okay to Cry", duration: "3:15" },
+    { name: 'Ponyboy', duration: "3:25" },
+    { name: "Immaterial", duration: '4:15' },
+    { name: "Not Okay", duration: '5:25' }])); 
+
+console.log('You just added ', addToCollection('EP2', 'Yaeji', 2017, 
+    [{ name:"Feelings Change", duration: "2:35"}, 
+    { name:"Raingurl", duration: "3:57"}, 
+    { name: "Drink I'm Sippin On", duration: "3:21"}, 
+    { name: "After That", duration: "3:38"}]));
+
+console.log('You just added ', addToCollection('Live!', 'Bob Marley', 1975, 
+    [{name: "Lively Up Yourself", duration: "4:33"}, 
+    {name: "Get Up Stand Up (live)", duration: "6:36"}, 
+    {name: "Trenchtown Rock", duration:"4:23"}, 
+    {name: "Them Belly Full", duration: "4:30"}, 
+    {name: "I Shot the Sheriff (Live)", duration:"5:18"}]));
+
+console.log('You just added ', addToCollection('Dreamland', 'Black Box', 1990, 
+        [{name: "Dreamland", duration: "2:04"}, 
+        {name: "Open Your Eyes", duration: "5:21"}, 
+        {name: "I Don't Know Anybody Else", duration: "4:35"}, 
+        {name: "Ride on Time", duration: "4:33"}, 
+        {name: "Everybody Everybody", duration: "5:23"}]));
+
+console.log('You just added ', addToCollection('Little Dragon', 'Little Dragon', 2007, 
+    [{name: "Twice", duration: "3:06"}, 
+    {name: "Turn Left", duration: "4:05"}, 
+    {name: "No Love", duration: "4:26"}, 
+    {name: "Recommendation", duration: "3:52"}, 
+    {name: "Constant Surprises", duration: "4:33"}]));
+
+console.log('You just added ', addToCollection('Channel Tres', 'Channel Tres', 2018, 
+    [{name: "St. Julian (intro)", duration: "1:29"}, 
+    {name: "Controller", duration: "3:28"}, 
+    {name: "Jet Black", duration: "4:33"}, 
+    {name: "Topdown", duration:"3:50"}]));
 
 console.log(collection);
 
-//Add a function named showCollection. This function should:
-// Take in an array parameter. (This allows it to be reused to show any collection, like the results from the find or search.)
-// Console.log the number of items in the array.
-// Loop over the array and console.log each album's information formatted like: TITLE by ARTIST, published in YEAR.
+        //Add a function named showCollection. This function should:
+        // Take in an array parameter. (This allows it to be reused to show any collection, like the results from the find or search.)
+        // Console.log the number of items in the array.
+        // Loop over the array and console.log each album's information formatted like: TITLE by ARTIST, published in YEAR.
 
-function showCollection(array) {
-    console.log("All items in collection array: ", array);
-    for (let i = 0; i < array.length; i++) {
-        let currentAlbum = array[i];
-        console.log(`${currentAlbum.title} by ${currentAlbum.artist} published in ${currentAlbum.yearPublished} featuring tracks ${currentAlbum.tracksWithDuration}`);
-    }
+        function showCollection(array) {
+            console.log("All items in collection array: ", array);
+            for(let i = 0; i<array.length; i++) {
+    let currentAlbum = array[i];
+    console.log(`${currentAlbum.title} by ${currentAlbum.artist} published in ${currentAlbum.yearPublished} featuring tracks ${currentAlbum.tracks}`);
 }
-//Test the showCollection function. 
-showCollection(collection);
+}
+    //Test the showCollection function. 
+    showCollection(collection);
 
 // Add a function named findByArtist. This function should:
 // Take in artist (a string) parameter
@@ -83,27 +115,28 @@ findByArtist('Backstreet Boys', collection);
 
 function isThisTrackIncluded(allTracks, trackToSearch) {
     // This function needs to see if trackToSearch exists in allTracks - search an array and return a boolean.
-    if (allTracks.indexOf(trackToSearch) !== -1); {
+    if (allTracks.indexOf(trackToSearch) !== -1) {
         return true;
-    } 
+    }
+    return false
 }
 
-function search (searchObject, collection){
-    if(Object.keys(searchObject).length === 0) {
-    return collection;
+function search(searchObject, collection) {
+    if (Object.keys(searchObject).length === 0) {
+        return collection;
     }
     let newArray = [];
-    for(let album of collection) {
-        if (searchObject.artist === album.artist && searchObject.yearPublished === album.yearPublished && isThisTrackIncluded(searchObject.tracksWithDuration, album.trackswithDuration)){
-        newArray.push(album);
-        } 
-    } 
+    for (let album of collection) {
+        if (searchObject.artist === album.artist && searchObject.yearPublished === album.yearPublished && isThisTrackIncluded(album.tracks, searchObject.tracks)) {
+            newArray.push(album);
+        }
+    }
     return newArray;
 }// end function
 
 let searchObject = {
     artist: 'Bob Marley',
     yearPublished: 1975,
-    tracksWithDuration: ["Get Up Stand Up (live)", "6:36"]
+    tracks: ["Trenchtown Rock", "4:23"]
 }
 console.log(search(searchObject, collection)); 
