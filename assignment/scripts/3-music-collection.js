@@ -113,13 +113,27 @@ findByArtist('Backstreet Boys', collection);
 // If no results are found, return an empty array.
 // If there is no search object or an empty search object provided as input, then return all albums in the collection.
 
-function isThisTrackIncluded(allTracks, trackToSearch) {
-    // This function needs to see if trackToSearch exists in allTracks - search an array and return a boolean.
-    if (allTracks.indexOf(trackToSearch) !== -1) {
-        return true;
+// function isThisTrackIncluded(allTracks, trackToSearch) {
+//     // This function needs to see if trackToSearch exists in allTracks - search an array and return a boolean.
+//     if (allTracks.indexOf(trackToSearch) !== -1) {
+//         return true;
+//     }
+//     return false
+// }
+
+function shallowEqual(object1, object2) {
+    const keys1 = Object.keys(object1);
+    const keys2 = Object.keys(object2);
+    if (keys1.length !== keys2.length) {
+      return false;
     }
-    return false
-}
+    for (let key of keys1) {
+      if (object1[key] !== object2[key]) {
+        return false;
+      }
+    }
+    return true;
+  }
 
 function search(searchObject, collection) {
     if (Object.keys(searchObject).length === 0) {
@@ -127,7 +141,7 @@ function search(searchObject, collection) {
     }
     let newArray = [];
     for (let album of collection) {
-        if (searchObject.artist === album.artist && searchObject.yearPublished === album.yearPublished && isThisTrackIncluded(album.tracks, searchObject.tracks)) {
+        if (searchObject.artist === album.artist && searchObject.yearPublished === album.yearPublished && (shallowEqual(searchObject.tracks, album.tracks))) {
             newArray.push(album);
         }
     }
